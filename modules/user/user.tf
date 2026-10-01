@@ -59,6 +59,12 @@ resource "keycloak_user" "this" {
   }
 }
 
+module "initial_password_dogsay" {
+  source = "git::https://github.com/ondrejsika/terraform-training.git//modules/dogsay"
+
+  text = slu_random_password.initial_password.result
+}
+
 resource "slu_mail_send" "initial_password" {
   from    = "ceo@foxconn.com"
   to      = keycloak_user.this.email
@@ -66,7 +72,9 @@ resource "slu_mail_send" "initial_password" {
   message = <<EOT
 Hi,
 
-Your initial password is: ${slu_random_password.initial_password.result}
+Your initial password is:
+
+${module.initial_password_dogsay.output}
 
 Ondrej,
 CEO of Foxconn
