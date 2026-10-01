@@ -1,15 +1,15 @@
 locals {
   users = {
-    "dela" = {
-      first_name = "Dela"
+    "aaa" = {
+      first_name = "AAA"
       last_name  = "Sika"
     }
-    "nela" = {
-      first_name = "Nela"
+    "bbb" = {
+      first_name = "BBB"
       last_name  = "Sika"
     }
-    "bela" = {
-      first_name = "Bela"
+    "ccc" = {
+      first_name = "CCC"
       last_name  = "Sika"
     }
   }
@@ -23,10 +23,13 @@ resource "keycloak_user" "users" {
   for_each = local.users
 
   lifecycle {
-    ignore_changes = [required_actions]
+    prevent_destroy = true
+    ignore_changes = [
+      required_actions,
+    ]
   }
 
-  realm_id = keycloak_realm.foxconn.id
+  realm_id = keycloak_realm.safedx.id
   username = each.key
   enabled  = true
 
@@ -51,7 +54,7 @@ output "initial_passwords" {
 resource "slu_mail_send" "initial_passwords" {
   for_each = local.users
 
-  from    = "ceo@foxconn.com"
+  from    = "ceo-dx@foxconn.com"
   to      = keycloak_user.users[each.key].email
   subject = "NEW INITIAL PASSWORD"
   message = <<EOT

@@ -1,0 +1,3 @@
+module "foxconn" {
+  source = "./foxconn"
+}

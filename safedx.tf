@@ -1,0 +1,3 @@
+module "safedx" {
+  source = "./safedx"
+}

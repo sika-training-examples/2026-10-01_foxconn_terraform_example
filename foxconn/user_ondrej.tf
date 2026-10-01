@@ -2,7 +2,8 @@ resource "slu_random_password" "ondrej_initial_password" {}
 
 resource "keycloak_user" "ondrej" {
   lifecycle {
-    ignore_changes = [required_actions]
+    prevent_destroy = true
+    ignore_changes  = [required_actions]
   }
 
   realm_id = keycloak_realm.foxconn.id
