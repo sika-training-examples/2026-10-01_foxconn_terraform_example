@@ -12,6 +12,10 @@ locals {
       first_name = "Bela"
       last_name  = "Sika"
     }
+    "cela" = {
+      first_name = "Cela"
+      last_name  = "Sika"
+    }
   }
 }
 

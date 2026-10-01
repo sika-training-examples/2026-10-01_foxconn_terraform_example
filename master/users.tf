@@ -15,3 +15,12 @@ module "bar_user" {
   last_name  = "Bar"
   email      = "bar@foxconn.com"
 }
+
+module "baz_user" {
+  source     = "../modules/user"
+  realm_id   = keycloak_realm.master.id
+  username   = "baz"
+  first_name = "Baz"
+  last_name  = "Baz"
+  email      = "baz@foxconn.com"
+}
