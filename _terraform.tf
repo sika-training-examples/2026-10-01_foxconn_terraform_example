@@ -22,3 +22,8 @@ provider "keycloak" {
   username  = "admin"
   password  = var.keycloak_password
 }
+
+provider "slu" {
+  smtp_host = "127.0.0.1"
+  smtp_port = 1025
+}
