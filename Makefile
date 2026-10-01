@@ -11,3 +11,6 @@ endif
 		-backend-config="lock_method=POST" \
 		-backend-config="unlock_method=DELETE" \
 		-backend-config="retry_wait_min=5"
+
+generate-docs-for-modules:
+	terraform-docs markdown table ./modules/user > modules/user/README.md
